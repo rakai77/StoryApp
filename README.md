@@ -1,3 +1,3 @@
 # AndroidIntermediate
 
-Submission 1 Android Intermediate Dicoding
+Submission Android Intermediate Dicoding
