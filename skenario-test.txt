@@ -1,0 +1,63 @@
+******************** Testing View Model ********************
+
+
+** SignupViewModelTest
+Ketika berhasil register (when signup is called and return success)
+- memastikan mengembalikan Reource.Success
+- memastikan data yang dimasukan tidak null
+- data yang dimaksukan sesuai ekspekasi (name, email, password)
+
+Ketika gagal melakukan register (when signup is failed and return error)
+- memastikan mengembalikan Reource.Error
+- memastikan data yang dimasukan tidak null
+- data yang dimaksukan sesuai ekspekasi (name, email, password)
+
+
+** LoginViewModelTest
+Ketika berhasil login (when login is called and return success)
+- memastikan mengembalikan Reource.Success
+- memastikan data yang dimasukan tidak null
+- - data yang dimaksukan sesuai ekspekasi (email, password)
+
+Ketika gagal melakukan login (when login is failed and return error)
+- memastikan mengembalikan Reource.Error
+- memastikan data yang dimasukan tidak null
+- data yang dimaksukan sesuai ekspekasi (email, password)
+
+
+** StoryViewModelTest
+Ketika berhasil add story (when addStory is called and return success)
+- memastikan mengembalikan Reource.Success
+- memastikan data yang dimasukan tidak null
+- data yang dimaksukan sesuai ekspekasi (token, dummyMultipart, dummyDescription)
+
+Ketika gagal melakukan add story (when addStory is failed and return error)
+- memastikan mengembalikan Reource.Error
+- memastikan data yang dimasukan tidak null
+- data yang dimaksukan sesuai ekspekasi (token, dummyMultipart, dummyDescription)
+
+
+** MapsViewModelTest
+Ketika berhasil load story location (when getStoryLocation() is called and return success)
+- memastikan mengembalikan Reource.Success
+- memastikan data yang dimasukan tidak null
+- memastikan jumlah data sesuai dengan data duummy yang diharapkan.
+
+Ketika gagal melakukan load story location (when getStoryLocation() is failed and return error)
+- memastikan mengembalikan Reource.Error
+- memastikan yang dimasukan data tidak null
+- memastikan jumlah data sesuai dengan data duummy yang diharapkan.
+
+
+** MainViewModelTest
+Ketika berhasil melakukan logout (set logout successfully)
+- memastikan proses logout berjalan
+
+Ketika dalam keaadan login (get session isLogin successfully)
+- Memastikan bahwa data local tidak kosong
+
+Ketika fungsi getStories() dipanggil (when getStory should not null) 
+- memastikan tidak mengembalikan nilai null dan mengembalikan PagingData
+
+Ketika berhasil memasukan token (get token successfully)
+- memastikan data sesuai dengan ekspekasi (token duummy)

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTextInputLayout">
+        <attr name="TextInputLayoutStyle" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="CustomTextInputEditText">
+        <attr name="TextInputEditTextStyle" format="reference"/>
+    </declare-styleable>
+</resources>

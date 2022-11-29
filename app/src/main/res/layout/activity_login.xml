@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imgLoginLogo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_340"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_68"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:contentDescription="@string/image_logo_login"
+        android:src="@drawable/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.storyapp.ui.customcomponent.CustomTextInputLayout
+        android:id="@+id/tflEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_32"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:alpha="0"
+        app:helperTextTextAppearance="@style/Subtitle2Semibold"
+        app:layout_constraintEnd_toEndOf="@+id/imgLoginLogo"
+        app:layout_constraintStart_toStartOf="@+id/imgLoginLogo"
+        app:layout_constraintTop_toBottomOf="@+id/imgLoginLogo"
+        app:startIconDrawable="@drawable/ic_baseline_email">
+
+        <com.example.storyapp.ui.customcomponent.CustomEmail
+            android:id="@+id/edtEmail"
+            style="@style/Subtitle1Semibold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            android:hint="@string/email"
+            android:textCursorDrawable="@drawable/cursor_blue5"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+    </com.example.storyapp.ui.customcomponent.CustomTextInputLayout>
+
+    <com.example.storyapp.ui.customcomponent.CustomTextInputLayout
+        android:id="@+id/tflPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_2"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:alpha="0"
+        app:helperTextTextAppearance="@style/Subtitle2Semibold"
+        app:layout_constraintEnd_toEndOf="@+id/tflEmail"
+        app:layout_constraintStart_toStartOf="@+id/tflEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tflEmail"
+        app:startIconDrawable="@drawable/ic_baseline_password">
+
+        <com.example.storyapp.ui.customcomponent.CustomPassword
+            android:id="@+id/edtPassword"
+            style="@style/Subtitle1Semibold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@drawable/cursor_blue5"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.example.storyapp.ui.customcomponent.CustomTextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Subtitle2Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:alpha="0"
+        android:backgroundTint="@color/blue5"
+        android:text="@string/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tflPassword" />
+
+    <TextView
+        android:id="@+id/tvOfferSignup"
+        style="@style/Subtitle2Semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:alpha="0"
+        android:text="@string/offer_signup"
+        android:textColor="@color/shades4"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <Button
+        android:id="@+id/btnOfferSignup"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:alpha="0"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:includeFontPadding="false"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
+        android:text="@string/btn_signup"
+        android:textColor="@color/blue5"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOfferSignup"
+        app:layout_constraintStart_toEndOf="@+id/tvOfferSignup"
+        app:layout_constraintTop_toTopOf="@+id/tvOfferSignup" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.StoryApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue3</item>
+        <item name="colorPrimaryVariant">@color/blue5</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/aqua5</item>
+        <item name="colorSecondaryVariant">@color/aqua6</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.StoryApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.StoryApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.StoryApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+<!--
+    custom theme text input layout
+-->
+    <style name="TextInputLayoutTheme" parent="@style/Theme.MaterialComponents.DayNight.Bridge">
+        <item name="colorControlNormal">@color/shades2</item>
+        <item name="colorControlActivated">@color/shades2</item>
+        <item name="TextInputLayoutStyle">@style/TextInputLayout</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:paddingTop">@dimen/spacing_xs</item>
+        <item name="android:paddingBottom">@dimen/spacing_xs</item>
+        <item name="android:textColorHint">@color/shades3</item>
+        <item name="hintTextAppearance">@style/Body3Regular</item>
+        <item name="hintTextColor">@color/blue5</item>
+        <item name="errorTextAppearance">@style/Body3Regular</item>
+        <item name="errorTextColor">@color/interpack6</item>
+
+        <item name="helperTextTextAppearance">@style/Body3Regular</item>
+        <item name="helperTextTextColor">@color/shades3</item>
+        <item name="prefixTextAppearance">@style/Subtitle2Regular</item>
+        <item name="prefixTextColor">@color/shades5</item>
+        <item name="suffixTextAppearance">@style/Subtitle2Regular</item>
+        <item name="suffixTextColor">@color/shades5</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="endIconTint">@color/shades3</item>
+    </style>
+
+    <style name="TextInputEditTextTheme">
+        <item name="TextInputEditTextStyle">@style/LPTextInputEditText</item>
+    </style>
+
+    <style name="LPTextInputEditText" parent="Widget.Design.TextInputEditText">
+        <!--        text appearance for input and hint label in both state -->
+        <item name="android:textAppearance">@style/Subtitle2Regular</item>
+        <item name="android:minHeight">55dp</item>
+        <item name="android:drawablePadding">@dimen/spacing_s</item>
+        <!--        blinking cursor -->
+        <item name="android:textCursorDrawable">@drawable/cursor_blue5</item>
+        <item name="hintTextColor">@color/blue5</item>
+    </style>
+</resources>

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <style name="H1Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">60sp</item>
+  </style>
+
+  <style name="H1Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">60sp</item>
+  </style>
+
+  <style name="H1Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">60sp</item>
+  </style>
+
+  <style name="H1Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">60sp</item>
+  </style>
+
+  <style name="H2Bold">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">48sp</item>
+  </style>
+
+  <style name="H2Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">48sp</item>
+  </style>
+
+  <style name="H2Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">48sp</item>
+  </style>
+
+  <style name="H2Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">48sp</item>
+  </style>
+
+  <style name="H3Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">34sp</item>
+  </style>
+
+  <style name="H3Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">34sp</item>
+  </style>
+
+  <style name="H3Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">34sp</item>
+  </style>
+
+  <style name="H3Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">34sp</item>
+  </style>
+
+  <style name="H4Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">24sp</item>
+  </style>
+
+  <style name="H4SemiBold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">24sp</item>
+  </style>
+
+  <style name="H4Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">24sp</item>
+  </style>
+
+  <style name="H4Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">24sp</item>
+  </style>
+
+  <style name="H5Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="H5Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="H5Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="H5Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="Subtitle1Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Body1Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Subtitle1Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Body1Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Subtitle1Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Body1Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Subtitle1Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Body1Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="Subtitle2Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="Body2Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="Subtitle2Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="LinkTextLink1">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.04</item>
+  </style>
+
+  <style name="ButtonButton">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.01</item>
+  </style>
+
+  <style name="Body2Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="Subtitle2Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="ButtonTextButton1">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.04</item>
+  </style>
+
+  <style name="Body2Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="Subtitle2Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="Body2Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="Subtitle3Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="Body3Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="Subtitle3Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="LinkTextLink2">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.04</item>
+  </style>
+
+  <style name="Body3Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="Subtitle3Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="ButtonTextButton2">
+    <item name="font">@font/poppins_medium</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.04</item>
+  </style>
+
+  <style name="Body3Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="Subtitle3Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="Body3Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="Subtitle4Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="Body4Bold">
+    <item name="font">@font/poppins_bold</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="Subtitle4Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="Body4Semibold">
+    <item name="font">@font/poppins_semi_bold</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="Subtitle4Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="Body4Medium">
+    <item name="font">@font/poppins_medium</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="Subtitle4Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="Body4Regular">
+    <item name="font">@font/poppins_regular</item>
+    <item name="fontStyle">normal</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+</resources>
