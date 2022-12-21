@@ -95,6 +95,6 @@ class MainViewModelTest {
         Assert.assertNotNull(differ.snapshot())
         Assert.assertEquals(dummyListStory, differ.snapshot())
         Assert.assertEquals(dummyListStory.size, differ.snapshot().size)
-        Assert.assertEquals(dummyListStory[0].name, differ.snapshot()[0]?.name)
+        Assert.assertEquals(dummyListStory[0].id, differ.snapshot()[0]?.id)
     }
 }

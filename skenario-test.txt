@@ -3,61 +3,77 @@
 
 ** SignupViewModelTest
 Ketika berhasil register (when signup is called and return success)
-- memastikan mengembalikan Reource.Success
-- memastikan data yang dimasukan tidak null
-- data yang dimaksukan sesuai ekspekasi (name, email, password)
+- Memastikan mengembalikan Resource.Success
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan dummy
 
 Ketika gagal melakukan register (when signup is failed and return error)
 - memastikan mengembalikan Reource.Error
-- memastikan data yang dimasukan tidak null
-- data yang dimaksukan sesuai ekspekasi (name, email, password)
-
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan Reource.Error
 
 ** LoginViewModelTest
 Ketika berhasil login (when login is called and return success)
-- memastikan mengembalikan Reource.Success
-- memastikan data yang dimasukan tidak null
-- - data yang dimaksukan sesuai ekspekasi (email, password)
+- Memastikan mengembalikan Resource.Success
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan dummy
 
 Ketika gagal melakukan login (when login is failed and return error)
 - memastikan mengembalikan Reource.Error
-- memastikan data yang dimasukan tidak null
-- data yang dimaksukan sesuai ekspekasi (email, password)
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan Reource.Error
 
+Ketika fungsi set token
+- memastikan fungsi set token dipanggil
+
+Ketika fungsi get token successfully
+- memastikan bahwa token tidak null
+- memastikan mengembalikan nilai expected sama dengan actual
 
 ** StoryViewModelTest
 Ketika berhasil add story (when addStory is called and return success)
-- memastikan mengembalikan Reource.Success
-- memastikan data yang dimasukan tidak null
-- data yang dimaksukan sesuai ekspekasi (token, dummyMultipart, dummyDescription)
+- Memastikan mengembalikan Resource.Success
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan dummy
 
 Ketika gagal melakukan add story (when addStory is failed and return error)
 - memastikan mengembalikan Reource.Error
-- memastikan data yang dimasukan tidak null
-- data yang dimaksukan sesuai ekspekasi (token, dummyMultipart, dummyDescription)
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan Reource.Error
 
+Ketika fungsi get token successfully
+- memastikan bahwa token tidak null
+- memastikan mengembalikan nilai expected sama dengan actual
 
 ** MapsViewModelTest
 Ketika berhasil load story location (when getStoryLocation() is called and return success)
-- memastikan mengembalikan Reource.Success
-- memastikan data yang dimasukan tidak null
-- memastikan jumlah data sesuai dengan data duummy yang diharapkan.
+- Memastikan mengembalikan Resource.Success
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan dummy
 
 Ketika gagal melakukan load story location (when getStoryLocation() is failed and return error)
 - memastikan mengembalikan Reource.Error
-- memastikan yang dimasukan data tidak null
-- memastikan jumlah data sesuai dengan data duummy yang diharapkan.
+- Memastikan response tidak bernilai null
+- Mengembalikan actual response sama dengan Reource.Error
+
+Ketika fungsi get token successfully
+- memastikan bahwa token tidak null
+- memastikan mengembalikan nilai expected sama dengan actual
 
 
 ** MainViewModelTest
 Ketika berhasil melakukan logout (set logout successfully)
 - memastikan proses logout berjalan
 
-Ketika dalam keaadan login (get session isLogin successfully)
-- Memastikan bahwa data local tidak kosong
+Ketika mendapatkan data user dari local (get session isLogin successfully)
+- Memastikan bahwa data actual tidak kosong
 
-Ketika fungsi getStories() dipanggil (when getStory should not null) 
-- memastikan tidak mengembalikan nilai null dan mengembalikan PagingData
+Ketika fungsi getStories() dipanggil (when getStory should not null)
+- Memastikan data dengan paging berhasil dipanggil
+- Memastikan data story tidak sama dengan null
+- Memastikan kesamaan data response antara data dummy dengan yang asli
+- Memastikan id pertama dari story sama dengan data dummy
 
-Ketika berhasil memasukan token (get token successfully)
-- memastikan data sesuai dengan ekspekasi (token duummy)
+Ketika fungsi get token successfully
+- memastikan bahwa token tidak null
+- memastikan mengembalikan nilai expected sama dengan actual
