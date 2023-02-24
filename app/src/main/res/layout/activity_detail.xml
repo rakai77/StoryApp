@@ -7,34 +7,68 @@
     android:background="@color/pensive1"
     tools:context=".ui.detail.DetailActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/customToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="@color/blue3"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Username"/>
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
     <ImageView
         android:id="@+id/imgDetailStory"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_224"
         android:layout_marginStart="@dimen/dp_18"
-        android:layout_marginTop="@dimen/dp_18"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/dp_18"
         android:contentDescription="@string/image_story"
         android:src="@drawable/avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/customToolbar" />
 
     <TextView
         android:id="@+id/tvDetailUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_8"
         android:text="@string/name"
+        android:textColor="@color/shades7"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintStart_toStartOf="@+id/imgDetailStory"
-        app:layout_constraintTop_toBottomOf="@+id/imgDetailStory" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
     <TextView
         android:id="@+id/tvDetailDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/description"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvDetailUsername"
         app:layout_constraintTop_toBottomOf="@+id/tvDetailUsername" />
 
@@ -44,6 +78,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
         android:text="@string/date"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintEnd_toEndOf="@+id/imgDetailStory"
         app:layout_constraintTop_toBottomOf="@+id/imgDetailStory" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

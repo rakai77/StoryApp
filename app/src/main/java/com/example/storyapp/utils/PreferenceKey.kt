@@ -3,7 +3,7 @@ package com.example.storyapp.utils
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 
-object Constanta {
+object PreferenceKey {
     val TOKEN = stringPreferencesKey("token")
-    val STATE = booleanPreferencesKey("state")
+    val USERNAME = stringPreferencesKey("username")
 }

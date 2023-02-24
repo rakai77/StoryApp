@@ -17,8 +17,10 @@ import com.example.storyapp.R
 import com.example.storyapp.databinding.ActivityCameraBinding
 import com.example.storyapp.ui.story.StoryActivity.Companion.CAMERA_X_RESULT
 import com.example.storyapp.utils.Utils.createFile
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.ExecutorService
 
+@AndroidEntryPoint
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCameraBinding
@@ -39,7 +41,6 @@ class CameraActivity : AppCompatActivity() {
             startCamera()
         }
     }
-
 
     public override fun onResume() {
         super.onResume()

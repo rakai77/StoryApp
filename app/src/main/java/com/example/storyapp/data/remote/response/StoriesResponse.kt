@@ -19,11 +19,8 @@ data class StoriesResponse(
     val message: String
 )
 
-@Parcelize
-@Entity(tableName = "story")
 data class ListStoryItem(
 
-    @PrimaryKey
     @field:SerializedName("id")
     val id: String,
 
@@ -44,4 +41,4 @@ data class ListStoryItem(
 
     @field:SerializedName("lon")
     val lon: Double,
-) : Parcelable
+)

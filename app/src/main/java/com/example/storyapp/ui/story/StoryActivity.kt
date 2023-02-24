@@ -10,22 +10,26 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.storyapp.R
 import com.example.storyapp.data.Resource
 import com.example.storyapp.databinding.ActivityStoryBinding
-import com.example.storyapp.ui.login.LoginActivity
-import com.example.storyapp.ui.viewmodel.StoryViewModelFactory
 import com.example.storyapp.utils.Utils
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -33,12 +37,14 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
+@AndroidEntryPoint
 class StoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityStoryBinding
-    private lateinit var storyViewModel: StoryViewModel
     private lateinit var currentPhotoPath: String
     private lateinit var token: String
+
+    private val viewModel by viewModels<StoryViewModel>()
 
     private val rotateOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -82,13 +88,13 @@ class StoryActivity : AppCompatActivity() {
             )
         }
 
-        setupViewModel()
         playAnimation()
+        getToken()
 
         binding.fab.setOnClickListener { onAddButtonClicked() }
         binding.fabCamera.setOnClickListener { startTakePhoto() }
         binding.fabGallery.setOnClickListener { startGallery() }
-        binding.btnAddStory.setOnClickListener { uploadImage() }
+        binding.btnAddStory.setOnClickListener { initObserver() }
 
     }
 
@@ -146,21 +152,18 @@ class StoryActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun setupViewModel() {
-        val viewModelFactory: StoryViewModelFactory = StoryViewModelFactory.getInstance(this)
-        storyViewModel = ViewModelProvider(this, viewModelFactory)[StoryViewModel::class.java]
-
-        storyViewModel.getToken().observe(this) { token ->
-            if (token.isEmpty()) {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            } else {
-                this.token = token
+    private fun getToken() {
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.token.collect {
+                    token = it
+                    Log.d("Check token", token)
+                }
             }
         }
     }
 
-    private fun uploadImage() {
+    private fun initObserver() {
         if (file != null) {
             val description = binding.edtDescription.text.toString().trim()
             if (description.isEmpty()) {
@@ -176,30 +179,35 @@ class StoryActivity : AppCompatActivity() {
                     media.name,
                     requestImageFile
                 )
-                storyViewModel.addStory(token, imageMultipart, descMedia)
-                    .observe(this) { resource ->
-                        if (resource != null) {
-                            when (resource) {
-                                is Resource.Loading -> {
-                                    binding.progressbar.visibility = View.VISIBLE
-                                }
-                                is Resource.Success -> {
-                                    binding.progressbar.visibility = View.GONE
-                                    Toast.makeText(this, resource.data.message, Toast.LENGTH_SHORT)
-                                        .show()
-                                    finish()
-                                }
-                                is Resource.Error -> {
-                                    binding.progressbar.visibility = View.GONE
-                                    Toast.makeText(
-                                        this,
-                                        "Failure : " + resource.error,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                lifecycleScope.launch {
+                    lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        viewModel.addStory("Bearer $token", imageMultipart, descMedia)
+                        Log.d("check token view model",  token)
+                        viewModel.addStory.observe(this@StoryActivity) { resource ->
+                            if (resource != null) {
+                                when (resource) {
+                                    is Resource.Loading -> {
+                                        binding.progressbar.visibility = View.VISIBLE
+                                    }
+                                    is Resource.Success -> {
+                                        binding.progressbar.visibility = View.GONE
+                                        Toast.makeText(this@StoryActivity, resource.data.message, Toast.LENGTH_SHORT)
+                                            .show()
+                                        finish()
+                                    }
+                                    is Resource.Error -> {
+                                        binding.progressbar.visibility = View.GONE
+                                        Toast.makeText(
+                                            this@StoryActivity,
+                                            "Failure : " + resource.error,
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
                             }
                         }
                     }
+                }
             }
         } else {
             Toast.makeText(

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/pensive1">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_story"
@@ -27,21 +26,24 @@
 
             <TextView
                 android:id="@+id/tv_username"
-                style="@style/Subtitle1Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_8"
                 android:layout_marginTop="@dimen/dp_8"
-                android:text="@string/username" />
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/username"
+                android:textColor="@color/shades7"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_date"
-                style="@style/Subtitle2Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_8"
                 android:layout_marginTop="@dimen/dp_8"
-                android:text="@string/date" />
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/date"
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/iv_story"
@@ -55,13 +57,14 @@
 
             <TextView
                 android:id="@+id/tv_desc"
-                style="@style/Subtitle2Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_8"
                 android:layout_marginTop="@dimen/dp_8"
                 android:layout_marginBottom="@dimen/dp_8"
-                android:text="@string/description" />
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/description"
+                android:textSize="14sp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

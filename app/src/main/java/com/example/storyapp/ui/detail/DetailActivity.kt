@@ -3,10 +3,12 @@ package com.example.storyapp.ui.detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.storyapp.data.remote.response.ListStoryItem
+import com.example.storyapp.data.local.entity.StoryEntity
 import com.example.storyapp.databinding.ActivityDetailBinding
 import com.example.storyapp.utils.Utils.setLocalDateFormat
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
@@ -16,10 +18,13 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        title = "Detail Story"
+        setSupportActionBar(binding.customToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val story = intent.getParcelableExtra<ListStoryItem>(EXTRA_DATA)
+        val story = intent.getParcelableExtra<StoryEntity>(EXTRA_DATA)
         binding.apply {
+            customToolbar.title = story?.name
+            toolbarTitle.text = story?.name
             tvDetailUsername.text = story?.name
             tvDate.setLocalDateFormat(story?.createdAt.toString())
             tvDetailDescription.text = story?.description

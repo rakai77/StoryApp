@@ -12,13 +12,16 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.storyapp.R
 import com.example.storyapp.data.Resource
 import com.example.storyapp.databinding.ActivityMapsBinding
-import com.example.storyapp.ui.viewmodel.StoryViewModelFactory
 import com.example.storyapp.utils.Utils
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -26,13 +29,17 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    private lateinit var mapsViewModel: MapsViewModel
     private lateinit var token: String
+    private val viewModel by viewModels<MapsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +47,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        token = intent.getStringExtra(EXTRA_TOKEN).toString()
+//        token = intent.getStringExtra(EXTRA_TOKEN).toString()
         setupViewModel()
-
+//        getToken()
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -89,32 +95,32 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setupMarker() {
-        mapsViewModel.getToken().observe(this) { token ->
-            if (token.isNotEmpty()) {
-                mapsViewModel.getStoryLocation(token).observe(this) { resource ->
-                    if (resource != null) {
-                        when (resource) {
-                            is Resource.Loading -> {
-                                View.VISIBLE
-                            }
-                            is Resource.Success -> {
-                                View.GONE
-                                resource.data.listStory.map {
-                                    mMap.addMarker(
-                                        MarkerOptions()
-                                            .position(LatLng(it.lat, it.lon))
-                                            .title(it.name)
-                                            .icon(Utils.vectorToBitmap(R.drawable.ic_location_pin_point,this))
-                                            .snippet("${it.lat}, ${it.lon}")
+        viewModel.maps.observe(this@MapsActivity) { resource ->
+            if (resource != null) {
+                when (resource) {
+                    is Resource.Loading -> {
+                        View.VISIBLE
+                    }
+                    is Resource.Success -> {
+                        View.GONE
+                        resource.data.listStory.map {
+                            mMap.addMarker(
+                                MarkerOptions()
+                                    .position(LatLng(it.lat, it.lon))
+                                    .title(it.name)
+                                    .icon(
+                                        Utils.vectorToBitmap(
+                                            R.drawable.ic_location_pin_point,
+                                            this
+                                        )
                                     )
-                                }
-                            }
-                            is Resource.Error -> {
-                                View.GONE
-                                Toast.makeText(this, "Error: ${resource.error}", Toast.LENGTH_LONG)
-                                    .show()
-                            }
+                                    .snippet("${it.lat}, ${it.lon}")
+                            )
                         }
+                    }
+                    is Resource.Error -> {
+                        View.GONE
+                        Toast.makeText(this, "Error: ${resource.error}", Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -131,9 +137,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
+    private fun getToken() {
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.token.collect {
+                    token = it
+                }
+            }
+        }
+    }
+
     private fun setupViewModel() {
-        val storyViewModelFactory: StoryViewModelFactory = StoryViewModelFactory.getInstance(this)
-        mapsViewModel = ViewModelProvider(this, storyViewModelFactory)[MapsViewModel::class.java]
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.token.collect {
+                        token = it
+                    }
+                }
+                launch {
+                    viewModel.getStoryLocation("Bearer $token")
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

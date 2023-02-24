@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue4"
-    tools:context=".ui.SplashActivity">
+    android:background="@color/blue3"
+    tools:context=".SplashActivity">
 
     <ImageView
         android:id="@+id/imgSplash"
@@ -18,16 +18,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_splash_screen" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_16"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/white"
-        android:indeterminateTintMode="src_atop"
-        app:layout_constraintEnd_toEndOf="@+id/imgSplash"
-        app:layout_constraintStart_toStartOf="@+id/imgSplash"
-        app:layout_constraintTop_toBottomOf="@+id/imgSplash" />
 </androidx.constraintlayout.widget.ConstraintLayout>
