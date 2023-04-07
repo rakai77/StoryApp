@@ -5,12 +5,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.storyapp.data.Resource
-import com.example.storyapp.data.remote.repository.StoryRemoteMediator
 import com.example.storyapp.data.local.entity.StoryEntity
 import com.example.storyapp.data.local.room.StoryDatabase
 import com.example.storyapp.data.remote.api.ApiService
+import com.example.storyapp.data.remote.repository.StoryRemoteMediator
 import com.example.storyapp.data.remote.response.AddNewStoryResponse
-import com.example.storyapp.data.remote.response.DetailResponse
+import com.example.storyapp.data.remote.response.DetailStoryResponse
 import com.example.storyapp.data.remote.response.StoriesResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -53,6 +53,17 @@ class StoryRepositoryImp @Inject constructor(private val apiService: ApiService,
         emit(Resource.Loading)
         try {
             val result = apiService.getStories(token, location = 1)
+            emit(Resource.Success(result))
+        }  catch (e: Exception) {
+            e.printStackTrace()
+            emit(Resource.Error(e.message.toString()))
+        }
+    }
+
+    override fun getDetailStories(token: String, id: String): Flow<Resource<DetailStoryResponse>> = flow {
+        emit(Resource.Loading)
+        try {
+            val result = apiService.getDetailStories(token, id)
             emit(Resource.Success(result))
         }  catch (e: Exception) {
             e.printStackTrace()

@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.example.storyapp.data.Resource
 import com.example.storyapp.data.local.entity.StoryEntity
 import com.example.storyapp.data.remote.response.AddNewStoryResponse
-import com.example.storyapp.data.remote.response.DetailResponse
+import com.example.storyapp.data.remote.response.DetailStoryResponse
 import com.example.storyapp.data.remote.response.StoriesResponse
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
@@ -17,4 +17,6 @@ interface StoryRepository {
     fun getAllStory(token: String) : Flow<PagingData<StoryEntity>>
 
     fun getStoryWithLocation(token: String) : Flow<Resource<StoriesResponse>>
+
+    fun getDetailStories(token: String, id : String) : Flow<Resource<DetailStoryResponse>>
 }

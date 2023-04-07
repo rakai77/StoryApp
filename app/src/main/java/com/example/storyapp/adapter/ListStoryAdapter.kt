@@ -11,7 +11,7 @@ import com.example.storyapp.data.remote.response.ListStoryItem
 import com.example.storyapp.databinding.ItemStoryBinding
 import com.example.storyapp.utils.Utils.setLocalDateFormat
 
-class ListStoryAdapter(private val onClicked: (StoryEntity) -> Unit) : PagingDataAdapter<StoryEntity, ListStoryAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class ListStoryAdapter(private val onClicked: (String) -> Unit) : PagingDataAdapter<StoryEntity, ListStoryAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = getItem(position)
@@ -33,7 +33,7 @@ class ListStoryAdapter(private val onClicked: (StoryEntity) -> Unit) : PagingDat
                 data.createdAt?.let { tvDate.setLocalDateFormat(it) }
                 tvDesc.text = data.description
                 itemView.setOnClickListener {
-                    onClicked.invoke(data)
+                    onClicked.invoke(data.id)
                 }
             }
         }

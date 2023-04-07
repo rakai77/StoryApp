@@ -37,4 +37,10 @@ interface ApiService {
         @Query("size") size: Int? = null,
         @Query("location") location: Int = 0
     ): StoriesResponse
+
+    @GET("stories/{id}")
+    suspend fun getDetailStories(
+        @Header("Authorization") token: String,
+        @Path("id") id : String
+    ): DetailStoryResponse
 }

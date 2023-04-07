@@ -17,7 +17,7 @@ import com.example.storyapp.adapter.ListStoryAdapter
 import com.example.storyapp.adapter.LoadingStateAdapter
 import com.example.storyapp.databinding.FragmentHomeBinding
 import com.example.storyapp.ui.detail.DetailActivity
-import com.example.storyapp.ui.detail.DetailActivity.Companion.EXTRA_DATA
+import com.example.storyapp.ui.detail.DetailActivity.Companion.STORY_ID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
             val adapter = ListStoryAdapter(
                 onClicked = {
                     val intent = Intent(requireContext(), DetailActivity::class.java)
-                    intent.putExtra(EXTRA_DATA, it)
+                    intent.putExtra(STORY_ID, it)
                     startActivity(intent)
                 }
             )
@@ -78,8 +78,10 @@ class HomeFragment : Fragment() {
             } else {
                 binding.rvStory.layoutManager = LinearLayoutManager(requireContext())
             }
-            lifecycleScope.launchWhenStarted {
-                viewModel.getALlStory("Bearer $token").collectLatest { adapter.submitData(viewLifecycleOwner.lifecycle, it) }
+            lifecycleScope.launch {
+                lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.getALlStory("Bearer $token").collectLatest { adapter.submitData(viewLifecycleOwner.lifecycle, it) }
+                }
             }
         }
     }
